@@ -1,0 +1,55 @@
+/*********************************
+函数名：账号注销函数
+**********************************/
+void zhanghaozhuxiao()
+{
+    US*head=NULL,*p=NULL,*q=NULL;
+    int i=0,flag=0;
+    char name[30],mima[20],a[9]="zhuxiao";
+	 printf("\t\t请输入您要注销的账号或昵称:");
+     fflush(stdin);                
+     gets(name);
+     printf("\t\t要注销账号的密码:");
+	 fflush(stdin);
+         while(1)
+		 {  
+	      mima[i]=getch();
+          if (mima[i] == '\x0d')
+		  {
+           mima[i]='\0';
+           break;
+		  }
+          printf("*");    
+	      i++;
+		 }
+   p=q=head=Read_1();
+   while(p!=NULL)
+   {
+     if(strcmp(name,p->id)==0&&strcmp(mima,p->pass)==0)
+	 {
+		 if(p->money==0)
+		 {
+             if(p==head)
+			 {
+	          head=p->next;
+			  flag=1;
+		      break;
+			 }
+             else
+			 {
+	          q->next=p->next;
+			  flag=1;
+	          break;	  
+			 }
+		 }
+	 }
+	q=p;
+	p=p->next;
+   }
+   if(flag==1)
+    Save_1(head,a);
+   else
+	printf("账号内还有问题待解决，按任意键继续》》》");
+   fflush(stdin);
+   getchar();
+}

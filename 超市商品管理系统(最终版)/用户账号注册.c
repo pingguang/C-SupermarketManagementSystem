@@ -1,0 +1,56 @@
+/*********************************
+º¯ÊýÃû£ºÓÃ»§×¢²á×Óº¯Êý
+**********************************/
+void yonghuzhuce() 
+{
+    US*head,*p,*pnew;
+	char a[8]="zhuce";
+	head=Read_1();
+    pnew=(US*)malloc(1*sizeof(US));
+	if(pnew==NULL)
+    {
+	printf("×¢²áÊ§°Ü£¡¡£¡£¡£¡£¡£\n");
+    exit(0);
+	}
+	pnew->next=NULL;
+    printf("***************»¶Ó­Äú×¢²á***************\n");
+  pp: printf("ÇëÊäÈëÄãµÄÕËºÅ»òêÇ³Æ:");
+    fflush(stdin);
+    gets(pnew->id);
+	p=head;
+    while(p!=NULL)
+	{
+	   if(strcmp(pnew->id,p->id)==0)
+	   {
+	   printf("--------------¸ÃÕËºÅÒÑ±»×¢²á,ÇëÖØÐÂ×¢²á------------------\n");
+	   goto pp;
+	   }
+	   p=p->next;
+	}
+	printf("ÇëÊäÈëÄãµÄÃÜÂë:");
+    fflush(stdin);
+    gets(pnew->pass);
+	pnew->money=0;
+	strcpy(pnew->dizhi,"ÎÞ");
+	system("cls");
+	printf("\n\n\n\n\n------ÄúµÄ×¢²áÐÅÏ¢ÈçÏÂ----------\n");
+    printf("ÄúµÄÕËºÅ/êÇ³Æ:%s\n",pnew->id);
+    printf("ÄúµÄÃÜÂë:%s\n",pnew->pass);
+	printf("ÃÜÂë¿ÉÄÜÐ¹Â¶£¬ÇëµÇÂ¼ºó¼°Ê±ÐÞ¸ÄÃÜÂë\n");
+	if(head==NULL)
+	{
+		head=pnew;
+	    p=pnew; 
+	}
+	else
+	{    
+		p=head=Read_1();
+		while(p->next!=NULL)
+			p=p->next;
+	 p->next=pnew;
+     p=pnew;
+	}
+	p->next=NULL;
+	Save_1(head,a);
+	jixu();
+}
